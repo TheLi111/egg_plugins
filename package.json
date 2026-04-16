@@ -1,0 +1,46 @@
+{
+  "name": "egg-sampling-daily",
+  "version": "0.3.1",
+  "description": "OpenClaw plugin for one-sentence daily egg sampling orchestration and report generation",
+  "type": "module",
+  "main": "dist/openclaw-entry.js",
+  "types": "dist/openclaw-entry.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx watch src/openclaw-entry.ts",
+    "regression:day3": "node scripts/day3-regression.mjs",
+    "pack:plugin": "npm pack"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist/",
+    "openclaw.plugin.json"
+  ],
+  "openclaw": {
+    "extensions": [
+      "./dist/openclaw-entry.js"
+    ],
+    "compat": {
+      "pluginApi": ">=2026.3.22",
+      "minGatewayVersion": "2026.3.22"
+    },
+    "build": {
+      "openclawVersion": "2026.3.22",
+      "pluginSdkVersion": "2026.3.22"
+    }
+  },
+  "peerDependencies": {
+    "openclaw": ">=2026.3.22"
+  },
+  "dependencies": {
+    "@sinclair/typebox": "^0.32.35",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.10",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

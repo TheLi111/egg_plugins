@@ -1,0 +1,117 @@
+{
+  "id": "egg-sampling-daily",
+  "name": "Egg Sampling Daily Plugin",
+  "description": "一句话触发每日蛋抽样：自动抽样上传、照检分类、时间补充、总结成报告，返回 report_file_id 与 class_distribution。",
+  "version": "0.3.1",
+  "author": "local-dev",
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "agentServiceBaseUrl": {
+        "type": "string",
+        "description": "Agent service base URL",
+        "default": "http://127.0.0.1:8010"
+      },
+      "apiToken": {
+        "type": "string",
+        "description": "Bearer token used by plugin when calling agent-service",
+        "default": "PLEASE_SET_API_TOKEN"
+      },
+      "requestTimeout": {
+        "type": "number",
+        "description": "Per HTTP request timeout in milliseconds",
+        "default": 15000
+      },
+      "workflowTimeout": {
+        "type": "number",
+        "description": "End-to-end workflow timeout in milliseconds",
+        "default": 120000
+      },
+      "defaultQueueSize": {
+        "type": "number",
+        "description": "Default queue size for daily egg sampling",
+        "default": 7
+      },
+      "defaultLocalPath": {
+        "type": "string",
+        "description": "Dataset root visible to system/file-agent",
+        "default": "/data/egg_images/imgs"
+      },
+      "defaultTargetDir": {
+        "type": "string",
+        "description": "VFS target directory for queue artifacts",
+        "default": "/sessions/input/egg-queue"
+      },
+      "reportFilename": {
+        "type": "string",
+        "description": "Report filename used by system/document-summary-agent",
+        "default": "egg_sampling_report.md"
+      },
+      "reportDir": {
+        "type": "string",
+        "description": "Report directory used by system/document-summary-agent",
+        "default": "/sessions/reports"
+      },
+      "terminalTimeCommand": {
+        "type": "string",
+        "description": "Time command passed to system/terminal-agent",
+        "default": "Get-Date -Format yyyy-MM-dd HH:mm:ss"
+      },
+      "terminalTimeoutMs": {
+        "type": "number",
+        "description": "Per-call timeout passed to system/terminal-agent",
+        "default": 15000
+      },
+      "documentSummaryCallTimeoutSeconds": {
+        "type": "number",
+        "description": "call_timeout_seconds passed to system/document-summary-agent",
+        "default": 60
+      },
+      "documentSummaryWaitTimeoutSeconds": {
+        "type": "number",
+        "description": "wait_timeout_seconds passed to system/document-summary-agent",
+        "default": 180
+      },
+      "fileServiceBaseUrl": {
+        "type": "string",
+        "description": "file-service URL used by system/file-agent",
+        "default": "http://file-service:8000"
+      },
+      "remotePort": {
+        "type": "number",
+        "description": "SSH port for system/egg-candling-agent",
+        "default": 60071
+      },
+      "connectTimeoutSeconds": {
+        "type": "number",
+        "description": "SSH connection timeout in seconds",
+        "default": 15
+      },
+      "commandTimeoutSeconds": {
+        "type": "number",
+        "description": "Remote command timeout in seconds",
+        "default": 600
+      },
+      "remoteProjectDir": {
+        "type": "string",
+        "description": "Remote project directory",
+        "default": "/mnt/n0/egg/demo"
+      },
+      "remotePythonBin": {
+        "type": "string",
+        "description": "Remote python executable",
+        "default": "python"
+      },
+      "remoteScriptName": {
+        "type": "string",
+        "description": "Remote batch script name",
+        "default": "predict.py"
+      }
+    }
+  },
+  "tools": {
+    "allow": [
+      "run_daily_egg_sampling_report"
+    ]
+  }
+}
