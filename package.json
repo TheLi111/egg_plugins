@@ -1,6 +1,6 @@
 {
   "name": "egg-sampling-daily",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "OpenClaw plugin for one-sentence daily egg sampling orchestration and report generation",
   "type": "module",
   "main": "dist/openclaw-entry.js",
